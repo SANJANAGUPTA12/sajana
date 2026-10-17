@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Do You Love Me?</title>
+    <!-- Use Tailwind CSS for modern, responsive styling. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            /* A soft, light pink background for a romantic feel. */
+            background-color: #fce7f3;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <!-- Main container for the app, centered on the page -->
+    <div id="app-container" class="bg-white p-8 rounded-3xl shadow-2xl max-w-sm w-full text-center">
+        <!-- Main image container -->
+        <div class="relative w-full aspect-square overflow-hidden rounded-2xl mb-6">
+            <img id="main-image" src="https://tse2.mm.bing.net/th/id/OIP.G5269tjtGdFYAN05NrRqngHaFI?pid=Api&P=0&h=180" alt="A pair of cats asking a question" class="w-full h-full object-cover transition-opacity duration-500 ease-in-out">
+        </div>
+
+        <!-- Text and button section, which changes based on the image -->
+        <div id="content-area">
+            <!-- Text for the initial question and its subtitle -->
+            <div id="question-text">
+                <h1 class="text-3xl font-bold text-gray-800 mb-2">Do you love me? 🥰</h1>
+                <p class="text-lg text-gray-500">I am all yours</p>
+            </div>
+            
+            <!-- Buttons for the user's choice -->
+            <div id="buttons" class="mt-6 flex justify-center space-x-4">
+                <button id="yes-btn" class="bg-pink-400 hover:bg-pink-500 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-transform duration-200 transform hover:scale-105">
+                    Yes
+                </button>
+                <button id="no-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 px-8 rounded-full shadow-lg transition-transform duration-200 transform hover:scale-105">
+                    No
+                </button>
+            </div>
+
+            <!-- Placeholder for the final message -->
+            <div id="final-text" class="hidden mt-6">
+                <h1 id="final-message" class="text-2xl font-bold text-gray-800 mb-2"></h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio element for the funny sound -->
+    <audio id="funny-audio" src="https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3"></audio>
+
+    <script>
+        // Get references to the HTML elements
+        const mainImage = document.getElementById('main-image');
+        const questionText = document.getElementById('question-text');
+        const buttons = document.getElementById('buttons');
+        const yesBtn = document.getElementById('yes-btn');
+        const noBtn = document.getElementById('no-btn');
+        const finalMessage = document.getElementById('final-message');
+        const finalText = document.getElementById('final-text');
+        const funnyAudio = document.getElementById('funny-audio');
+
+        // Define the image URLs for easy access
+        const initialImage = 'https://tse2.mm.bing.net/th/id/OIP.G5269tjtGdFYAN05NrRqngHaFI?pid=Api&P=0&h=180';
+        const yesImage =  'https://tse3.mm.bing.net/th/id/OIP.KtmbkhTFycE4xXIh7xs15wHaEV?pid=Api&P=0&h=180';
+        const noImage = 'https://tse4.mm.bing.net/th/id/OIP.AFXf0nhepTFE_gONVqcdpQHaGX?pid=Api&P=0&h=180';
+
+        // Add a click event listener to the 'Yes' button
+        yesBtn.addEventListener('click', () => {
+            // Change the image source to the 'yes' image
+            mainImage.src = yesImage;
+            
+            // Hide the question text and buttons
+            questionText.classList.add('hidden');
+            buttons.classList.add('hidden');
+            
+             funnyAudio.play();
+            // Show the final message area and set the text
+            finalText.classList.remove('hidden');
+            finalMessage.textContent = "I love you too! ❤️";
+        });
+
+        // Add a click event listener to the 'No' button
+        noBtn.addEventListener('click', () => {
+            // Change the image source to the 'no' image
+            mainImage.src = noImage;
+            
+            // Hide the question text and buttons
+            questionText.classList.add('hidden');
+            buttons.classList.add('hidden');
+            
+            // Play the funny audio
+
+            // funnyAudio.play();
+
+            // Show the final message area and set the text
+            finalText.classList.remove('hidden');
+            finalMessage.textContent = "Aww, that's okay. 💔";
+        });
+    </script>
+
+</body>
+</html>
